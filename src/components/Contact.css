@@ -1,0 +1,91 @@
+/* Contacto: gran tarjeta oscura del bento */
+.contact-box {
+  position: relative;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  border-radius: 2rem;
+  background: var(--mc-ink);
+  color: var(--mc-white);
+  overflow: hidden;
+}
+.contact-box .section-title { color: var(--mc-white); }
+.contact-box .section-title .accent { color: var(--mc-lilac); }
+.contact-box .section-lead { color: rgba(255, 255, 255, .65); }
+.contact-box .eyebrow { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .1); color: var(--mc-white); }
+
+.contact-channels {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.contact-channels a,
+.contact-channels div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--mc-white);
+}
+.contact-channels a:hover { color: var(--mc-lilac); }
+.contact-channels small {
+  display: block;
+  color: rgba(255, 255, 255, .5);
+  font-size: .8rem;
+}
+.channel-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, .08);
+}
+
+/* Formulario: campos claros dentro de la tarjeta oscura */
+.contact-form .form-label {
+  font-weight: 600;
+  font-size: .9rem;
+  color: rgba(255, 255, 255, .8);
+}
+.contact-form .form-control,
+.contact-form .form-select {
+  padding: .8rem 1rem;
+  color: var(--mc-ink);
+  background-color: var(--mc-white);
+  border: 1px solid transparent;
+  border-radius: .9rem;
+}
+.contact-form .form-control::placeholder { color: #9a94a0; }
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  color: var(--mc-ink);
+  border-color: var(--mc-purple);
+  box-shadow: 0 0 0 .25rem rgba(226, 164, 255, .35);
+}
+
+.contact-thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  min-height: 20rem;
+}
+.contact-thanks h3 { color: var(--mc-white); }
+.contact-thanks > i { font-size: 3rem; color: var(--mc-lilac); margin-bottom: 1rem; }
+.contact-thanks p { color: rgba(255, 255, 255, .65); margin-bottom: 1.5rem; }
+.contact-thanks .mc-btn-outline { color: var(--mc-white); border-color: rgba(255, 255, 255, .3); }
+
+/* Círculos de la marca, en blanco sobre la tarjeta oscura */
+.contact-circles {
+  position: absolute;
+  top: -2rem;
+  right: -1.5rem;
+  width: clamp(8rem, 15vw, 12rem);
+  opacity: .9;
+  filter: invert(1);
+  pointer-events: none;
+}
+.contact-box .row { position: relative; z-index: 1; }

@@ -1,0 +1,32 @@
+.faq-list { display: grid; gap: .6rem; }
+.faq-list details {
+  border-radius: 1.25rem;
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  transition: background .2s;
+}
+.faq-list details[open] { background: var(--mc-purple-soft); border-color: transparent; }
+.faq-list summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary i {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  color: var(--mc-purple);
+  background: var(--mc-purple-soft);
+  transition: transform .25s, background .2s;
+}
+.faq-list details[open] summary i { transform: rotate(45deg); background: var(--mc-surface); }
+.faq-list details p { margin: 0; padding: 0 1.3rem 1.2rem; color: var(--mc-muted); line-height: 1.6; }

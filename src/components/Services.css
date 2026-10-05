@@ -1,0 +1,29 @@
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: .6rem;
+}
+.service-card p {
+  color: var(--mc-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--mc-ink);
+}
+.service-link i { transition: transform .2s; }
+.service-link:hover { color: var(--mc-purple); }
+.service-link:hover i { transform: translateX(4px); }
+
+/* Bento: la primera tarjeta oscura y la cuarta con tinte morado para romper la monotonía */
+.services .col-md-6:nth-child(1) .service-card { background: var(--mc-ink); border-color: var(--mc-ink); }
+.services .col-md-6:nth-child(1) .service-card h3,
+.services .col-md-6:nth-child(1) .service-link { color: var(--mc-white); }
+.services .col-md-6:nth-child(1) .service-card p { color: rgba(255, 255, 255, .65); }
+.services .col-md-6:nth-child(1) .mc-icon { background: rgba(255, 255, 255, .1); color: var(--mc-lilac); }
+.services .col-md-6:nth-child(4) .service-card { background: var(--mc-purple-soft); border-color: transparent; }
+.services .col-md-6:nth-child(4) .mc-icon { background: var(--mc-surface); }

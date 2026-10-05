@@ -1,0 +1,194 @@
+/* ===== Marca MCCore · estilo bento claro (se carga después de Bootstrap) ===== */
+:root {
+  /* Colores de marca */
+  --mc-purple: #8800b3;       /* "M" del logo: único acento, siempre plano */
+  --mc-purple-dark: #6d0090;
+  --mc-purple-soft: #f2e7f8;  /* tinte suave para tarjetas de acento */
+  --mc-gray: #a6a6a6;         /* "C" del logo */
+  --mc-lilac: #e2a4ff;        /* solo sobre tarjetas oscuras */
+  --mc-white: #fff;
+  --mc-black: #000;
+
+  /* Neutros cálidos */
+  --mc-bg: #f4f1ec;           /* fondo hueso */
+  --mc-surface: #ffffff;      /* tarjetas */
+  --mc-ink: #17131d;          /* texto y tarjetas oscuras */
+  --mc-ink-2: #241f2b;
+  --mc-muted: #6b6472;
+  --mc-border: rgba(23, 19, 29, .09);
+
+  /* Compatibilidad: donde antes había degradado ahora va el morado plano */
+  --mc-gradient: var(--mc-purple);
+  --mc-violet: var(--mc-purple);
+
+  --mc-radius: 1.5rem;
+  --mc-font-display: "Raleway", system-ui, sans-serif;
+  --mc-font-body: "Open Sans", system-ui, sans-serif;
+  --mc-gutter: clamp(1rem, 4vw, 3rem);
+
+  /* Bootstrap usa estas variables */
+  --bs-body-bg: var(--mc-bg);
+  --bs-body-color: var(--mc-ink);
+  --bs-body-font-family: var(--mc-font-body);
+  --bs-primary: var(--mc-purple);
+  --bs-primary-rgb: 136, 0, 179;
+  --bs-link-color: var(--mc-ink);
+  --bs-link-hover-color: var(--mc-purple);
+  --bs-border-color: var(--mc-border);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h, 6rem) + 1rem); }
+body {
+  /* Números normales (Raleway trae por defecto números "antiguos" que suben y bajan) */
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+  background: var(--mc-bg);
+  color: var(--mc-ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; }
+h1, h2, h3, h4 {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+  font-family: var(--mc-font-display);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--mc-ink);
+}
+
+/* ===== Secciones ===== */
+.section {
+  position: relative;
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+.section.alt { background: transparent; }
+.section .container { max-width: 1240px; }
+
+.section-head {
+  max-width: 720px;
+  margin: 0 auto clamp(2.25rem, 4vw, 3.25rem);
+  text-align: center;
+}
+.section-head.text-start { margin-left: 0; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+  padding: .3rem .8rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--mc-ink);
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+}
+.eyebrow::before {
+  content: "";
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: var(--mc-purple);
+}
+.section-title {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
+.section-title .accent { color: var(--mc-purple); }
+.section-lead {
+  color: var(--mc-muted);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ===== Tarjeta bento base ===== */
+.mc-card {
+  position: relative;
+  height: 100%;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: var(--mc-radius);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.mc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -18px rgba(23, 19, 29, .35);
+}
+.mc-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  color: var(--mc-purple);
+  background: var(--mc-purple-soft);
+  transition: background .3s, color .3s;
+}
+.mc-card:hover .mc-icon { background: var(--mc-purple); color: var(--mc-white); }
+
+/* ===== Botones (planos) ===== */
+.mc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--mc-white);
+  background: var(--mc-purple);
+  transition: background .2s, color .2s, transform .2s;
+}
+.mc-btn:hover,
+.mc-btn:focus-visible {
+  color: var(--mc-white);
+  background: var(--mc-purple-dark);
+  transform: translateY(-1px);
+}
+.mc-btn-dark { background: var(--mc-ink); }
+.mc-btn-dark:hover,
+.mc-btn-dark:focus-visible { background: #000; }
+.mc-btn-outline {
+  color: var(--mc-ink);
+  background: transparent;
+  border-color: rgba(23, 19, 29, .2);
+}
+.mc-btn-outline:hover,
+.mc-btn-outline:focus-visible { color: var(--mc-ink); background: rgba(23, 19, 29, .05); }
+
+/* ===== Barra de progreso del scroll ===== */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 300;
+  height: 2px;
+  background: var(--mc-purple);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ===== Detalles de marca ===== */
+::selection { background: var(--mc-purple); color: var(--mc-white); }
+
+/* ===== Aparecer al hacer scroll ===== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+  transition-delay: var(--delay, 0s);
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
