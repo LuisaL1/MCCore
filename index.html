@@ -1,16 +1,100 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== SEO básico ===== -->
+    <title>MCCore | Desarrollo de software a la medida en Quindío, Colombia</title>
+    <meta name="description" content="Desarrollamos software a la medida, apps, páginas web e inteligencia artificial para empresas en Colombia. Conoce Stockly: inventario, ventas y facturas en un solo lugar." />
+    <link rel="canonical" href="https://mccore.com.co/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="MCCore" />
+    <meta name="theme-color" content="#f4f1ec" />
+
+    <!-- Ubicación -->
+    <meta name="geo.region" content="CO-QUI" />
+    <meta name="geo.placename" content="Quindío, Colombia" />
+
+    <!-- ===== Íconos y manifest ===== -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCCore | Construimos lo que sigue</title>
-    <meta name="description" content="MCCore: tu idea, nuestra ingeniería. Desarrollo de software y soluciones tecnológicas." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- ===== Al compartir en redes (WhatsApp, Facebook, LinkedIn) ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MCCore" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:url" content="https://mccore.com.co/" />
+    <meta property="og:title" content="MCCore | Tecnología que encaja con tu negocio" />
+    <meta property="og:description" content="Software a la medida, apps e inteligencia artificial desde el Quindío. Conoce Stockly: tu inventario, por fin en orden." />
+    <meta property="og:image" content="https://mccore.com.co/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MCCore: tecnología que encaja con tu negocio, y Stockly, tu inventario por fin en orden" />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MCCore | Tecnología que encaja con tu negocio" />
+    <meta name="twitter:description" content="Software a la medida, apps e inteligencia artificial desde el Quindío. Conoce Stockly." />
+    <meta name="twitter:image" content="https://mccore.com.co/og-image.jpg" />
+
+    <!-- ===== Datos estructurados (Schema.org): le dicen a Google quién es MCCore y qué es Stockly ===== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://mccore.com.co/#organizacion",
+            "name": "MCCore",
+            "url": "https://mccore.com.co/",
+            "logo": "https://mccore.com.co/apple-touch-icon.png",
+            "image": "https://mccore.com.co/og-image.jpg",
+            "description": "Empresa de ingeniería de software del Quindío, Colombia: desarrollo web, apps móviles, software a la medida e inteligencia artificial.",
+            "email": "equipo@mccore.com.co",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Quindío",
+              "addressCountry": "CO"
+            },
+            "areaServed": { "@type": "Country", "name": "Colombia" },
+            "knowsAbout": ["Desarrollo de software", "Desarrollo web", "Aplicaciones móviles", "Inteligencia artificial", "Software de inventario"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "equipo@mccore.com.co",
+              "contactType": "customer service",
+              "availableLanguage": "Spanish"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://mccore.com.co/#sitio",
+            "url": "https://mccore.com.co/",
+            "name": "MCCore",
+            "inLanguage": "es-CO",
+            "publisher": { "@id": "https://mccore.com.co/#organizacion" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://mccore.com.co/#stockly",
+            "name": "Stockly",
+            "description": "Software en la nube para manejar inventario, ventas y facturas de negocios en Colombia. Funciona en computador, tablet y celular.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "url": "https://appstockly.com/",
+            "inLanguage": "es-CO",
+            "publisher": { "@id": "https://mccore.com.co/#organizacion" },
+            "offers": [
+              { "@type": "Offer", "name": "Básico", "price": "0", "priceCurrency": "COP" },
+              { "@type": "Offer", "name": "Pro", "price": "69900", "priceCurrency": "COP" },
+              { "@type": "Offer", "name": "Enterprise", "price": "189900", "priceCurrency": "COP" }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

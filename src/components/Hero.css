@@ -374,3 +374,6 @@ a.tile:hover .tile-link i,
   .tile-stat { min-height: 0; }
   .human-circles { width: 7rem; }
 }
+
+/* Mantiene la proporción de los círculos (tienen width/height en el HTML) */
+.human-circles { height: auto; }

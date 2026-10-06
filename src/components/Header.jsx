@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import logo from '../assets/logo-mccore-dark.png'
-import stocklyLogo from '../assets/stockly-logo.png'
+import logo from '../assets/logo-mccore-dark.webp'
+import stocklyLogo from '../assets/stockly-logo.webp'
 import { openNovandra } from '../lib/novandra.js'
 import './Header.css'
 
@@ -130,7 +130,7 @@ export default function Header() {
             >
               <span className={`nav-feature-icon ${f.image ? 'has-image' : ''}`}>
                 {f.image
-                  ? <img src={f.image} alt="" aria-hidden="true" />
+                  ? <img src={f.image} alt="" aria-hidden="true" width="160" height="161" />
                   : <i className={`bi ${f.icon}`} aria-hidden="true" />}
               </span>
               <span className="nav-feature-title">
@@ -170,7 +170,7 @@ export default function Header() {
     >
       <div className="nav-shell" ref={shellRef}>
         <a href="#inicio" className="brand" aria-label="MCCore, ir al inicio" onClick={closeAll}>
-          <img src={logo} alt="MCCore" width="900" height="357" />
+          <img src={logo} alt="MCCore" width="360" height="143" />
         </a>
 
         {/* ===== Menú de escritorio ===== */}

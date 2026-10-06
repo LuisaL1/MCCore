@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import circles from '../assets/hero-circles.png'
+import circles from '../assets/hero-circles.webp'
 import './Contact.css'
 
 // Datos de contacto oficiales
@@ -32,7 +32,7 @@ export default function Contact() {
     <section id="contacto" className="section contact">
       <div className="container">
         <div className="contact-box" data-reveal>
-          <img className="contact-circles" src={circles} alt="" aria-hidden="true" />
+          <img className="contact-circles" src={circles} alt="" aria-hidden="true" width="520" height="454" loading="lazy" />
           <div className="row g-5">
             <div className="col-lg-5">
               <span className="eyebrow">Contacto</span>

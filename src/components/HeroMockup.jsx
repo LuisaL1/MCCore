@@ -1,4 +1,4 @@
-import stocklyLogo from '../assets/stockly-logo.png'
+import stocklyLogo from '../assets/stockly-logo.webp'
 import './HeroMockup.css'
 
 // Réplica en HTML/CSS de la app real de Stockly (datos de ejemplo), dentro de una laptop 3D,
@@ -37,7 +37,7 @@ export default function HeroMockup() {
               {/* Menú lateral */}
               <aside className="hm-side">
                 <div className="hm-brand">
-                  <img src={stocklyLogo} alt="" /> Stockly
+                  <img src={stocklyLogo} alt="" width="160" height="161" /> Stockly
                 </div>
                 <div className="hm-company">
                   <span className="hm-company-icon"><i className="bi bi-buildings" /></span>

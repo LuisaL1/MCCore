@@ -89,3 +89,5 @@
   pointer-events: none;
 }
 .contact-box .row { position: relative; z-index: 1; }
+
+.contact-circles { height: auto; }

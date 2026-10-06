@@ -1,0 +1,5 @@
+# Permite que todos los buscadores rastreen la página
+User-agent: *
+Allow: /
+
+Sitemap: https://mccore.com.co/sitemap.xml

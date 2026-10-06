@@ -1,4 +1,4 @@
-import logo from '../assets/logo-mccore-dark.png'
+import logo from '../assets/logo-mccore-dark.webp'
 import './Footer.css'
 
 const columns = [
@@ -37,7 +37,7 @@ export default function Footer() {
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-5">
-            <img src={logo} alt="MCCore" className="footer-logo" />
+            <img src={logo} alt="MCCore" className="footer-logo" width="360" height="143" loading="lazy" />
             <p className="footer-tagline">Tu idea, nuestra ingeniería.</p>
             <p className="footer-location"><i className="bi bi-geo-alt" aria-hidden="true" /> Quindío, Colombia</p>
             <div className="footer-socials">
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
           {columns.map(col => (
             <div className="col-6 col-lg-3" key={col.title}>
-              <h4>{col.title}</h4>
+              <h3 className="footer-title">{col.title}</h3>
               <ul>
                 {col.links.map(l => (
                   <li key={l.label}><a href={l.href}>{l.label}</a></li>

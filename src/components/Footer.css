@@ -23,7 +23,7 @@
 }
 .footer-socials a:hover { background: var(--mc-ink); color: var(--mc-white); }
 
-.site-footer h4 { font-size: 1rem; margin-bottom: 1rem; }
+.site-footer .footer-title { font-size: 1rem; margin-bottom: 1rem; }
 .site-footer ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .6rem; }
 .site-footer ul a { color: var(--mc-muted); }
 .site-footer ul a:hover { color: var(--mc-purple); }

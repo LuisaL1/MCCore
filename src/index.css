@@ -192,3 +192,26 @@ h1, h2, h3, h4 {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* ===== Formularios (antes venían de Bootstrap completo) ===== */
+.form-label { display: inline-block; margin-bottom: .5rem; }
+.form-control,
+.form-select {
+  display: block;
+  width: 100%;
+  font: inherit;
+  line-height: 1.5;
+  appearance: none;
+  background-clip: padding-box;
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-control:focus,
+.form-select:focus { outline: 0; }
+textarea.form-control { min-height: 6rem; resize: vertical; }
+.form-select {
+  padding-right: 2.5rem !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2317131d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 14px 12px;
+}

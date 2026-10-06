@@ -1,0 +1,14 @@
+{
+  "name": "MCCore",
+  "short_name": "MCCore",
+  "description": "Software a la medida, apps e inteligencia artificial desde el Quindío, Colombia.",
+  "lang": "es-CO",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f4f1ec",
+  "theme_color": "#f4f1ec",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

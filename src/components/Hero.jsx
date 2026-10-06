@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import circles from '../assets/hero-circles.png'
+import circles from '../assets/hero-circles.webp'
 import { openNovandra } from '../lib/novandra.js'
 import PromptBar from './PromptBar.jsx'
 import HeroMockup from './HeroMockup.jsx'
-import stocklyLogo from '../assets/stockly-logo.png'
+import stocklyLogo from '../assets/stockly-logo.webp'
 import './Hero.css'
 
 // Datos de ejemplo de la vista previa de Stockly
@@ -71,7 +71,7 @@ export default function Hero() {
         {/* 2 · Stockly */}
         <a href="#stockly" className="tile tile-stockly" data-reveal style={{ '--delay': '.08s' }}>
           <div className="stockly-head">
-            <span className="stockly-mark"><img src={stocklyLogo} alt="" aria-hidden="true" /></span>
+            <span className="stockly-mark"><img src={stocklyLogo} alt="" aria-hidden="true" width="160" height="161" /></span>
             <span>
               <strong>Stockly</strong>
               <small>Tu aliado en inventarios</small>
@@ -111,7 +111,7 @@ export default function Hero() {
 
         {/* 4 · Lado humano */}
         <div className="tile tile-human" data-reveal style={{ '--delay': '.16s' }}>
-          <img src={circles} alt="" className="human-circles" aria-hidden="true" />
+          <img src={circles} alt="" className="human-circles" aria-hidden="true" width="520" height="454" />
           <span className="human-place"><i className="bi bi-geo-alt" aria-hidden="true" /> Hecho en el Quindío</span>
           <p className="human-text">Soluciones tecnológicas a tu medida.</p>
           <span className="human-note">
@@ -136,7 +136,7 @@ export default function Hero() {
         <div className="hs-copy">
           <span className="hs-label">Nuestro producto</span>
           <div className="hs-brand">
-            <img src={stocklyLogo} alt="" className="hs-logo" aria-hidden="true" />
+            <img src={stocklyLogo} alt="" className="hs-logo" aria-hidden="true" width="160" height="161" />
             Stockly
           </div>
           <h2 className="hs-title">Tu inventario, por fin en orden.</h2>
@@ -157,7 +157,7 @@ export default function Hero() {
             </button>
           </div>
           <p className="hs-perk">
-            <i className="bi bi-gift" aria-hidden="true" /> 1 mes de Pro gratis · Sin tarjeta
+            <i className="bi bi-gift" aria-hidden="true" /> 1 mes de Pro gratis
           </p>
         </div>
         <div className="hs-visual">

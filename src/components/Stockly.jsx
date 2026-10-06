@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { requestStocklyTrial } from '../lib/stocklyTrial.js'
-import logo from '../assets/stockly-logo.png'
-import illustration from '../assets/stockly-ilustracion.jpg'
+import logo from '../assets/stockly-logo.webp'
+import illustration from '../assets/stockly-ilustracion.webp'
 import StocklyFeatures from './StocklyFeatures.jsx'
 import StocklyPlans from './StocklyPlans.jsx'
 import StocklyFaq from './StocklyFaq.jsx'
@@ -124,7 +124,7 @@ export default function Stockly() {
           <span className="pulse-dot" /> Nuevo · Ya disponible
         </span>
         <div className="stockly-brand">
-          <img src={logo} alt="" className="stockly-logo-img" aria-hidden="true" />
+          <img src={logo} alt="" className="stockly-logo-img" aria-hidden="true" width="160" height="161" />
           Stockly
         </div>
         <h2 className="section-title">
@@ -201,7 +201,7 @@ export default function Stockly() {
             <i className="bi bi-exclamation-circle" aria-hidden="true" /> {errorMsg}
           </p>
         )}
-        {!joined && status !== 'error' && <small className="stockly-note">Sin tarjeta · Solo 20 cupos</small>}
+        {!joined && status !== 'error' && <small className="stockly-note">Solo 20 cupos</small>}
         <button type="button" className="stockly-more" onClick={() => go('detalles')}>
           Ver todo lo que hace Stockly <i className="bi bi-arrow-right" aria-hidden="true" />
         </button>
