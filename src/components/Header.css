@@ -244,10 +244,16 @@
   .header-cta { display: none; }
   .nav-toggle { display: flex; }
 
+  /* El menú flota sobre la página: si ocupara espacio dentro del header (aunque esté
+     oculto), taparía los botones de arriba del contenido en celular y tablet */
   .mobile-menu {
     display: block;
+    position: absolute;
+    top: calc(100% + .5rem);
+    left: var(--mc-gutter);
+    right: var(--mc-gutter);
     max-width: 1240px;
-    margin: .5rem auto 0;
+    margin: 0 auto;
     max-height: calc(100svh - 6rem);
     overflow-y: auto;
     padding: .6rem;
