@@ -114,6 +114,11 @@ export default function Hero() {
           <img src={circles} alt="" className="human-circles" aria-hidden="true" width="520" height="454" />
           <span className="human-place"><i className="bi bi-geo-alt" aria-hidden="true" /> Hecho en el Quindío</span>
           <p className="human-text">Soluciones tecnológicas a tu medida.</p>
+          <ol className="human-steps" aria-label="Cómo trabajamos">
+            <li><span>1</span> Nos cuentas tu idea</li>
+            <li><span>2</span> Te enviamos la propuesta</li>
+            <li><span>3</span> Construimos contigo</li>
+          </ol>
           <span className="human-note">
             <i className="bi bi-chat-dots" aria-hidden="true" /> Hablas directo con quien construye tu proyecto
           </span>

@@ -29,3 +29,5 @@ _version-estatica/
 
 # Archivos temporales de la CLI de Supabase
 supabase/.temp/
+.vercel
+.env*

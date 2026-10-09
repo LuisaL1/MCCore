@@ -377,3 +377,45 @@ a.tile:hover .tile-link i,
 
 /* Mantiene la proporción de los círculos (tienen width/height en el HTML) */
 .human-circles { height: auto; }
+
+/* Mini paso a paso dentro de la tarjeta humana (llena el espacio con algo útil) */
+.human-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+.human-steps li {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .8rem .85rem;
+  border-radius: 1rem;
+  background: var(--mc-bg);
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.human-steps span {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--mc-purple);
+  background: var(--mc-purple-soft);
+}
+.human-steps li:last-child { color: var(--mc-white); background: var(--mc-ink); }
+.human-steps li:last-child span { color: var(--mc-ink); background: var(--mc-lilac); }
+.tile-human .human-note { margin-top: .9rem; }
+@media (max-width: 420px) {
+  .human-steps { grid-template-columns: 1fr; }
+  .human-steps li { flex-direction: row; align-items: center; }
+}
+@media (max-width: 680px) {
+  .tile-human .human-text { max-width: none; padding-right: 5.5rem; }
+}
