@@ -5,8 +5,8 @@
 // Secretos (ya existentes en el proyecto): BREVO_API_KEY
 // Opcionales:
 //   PROMO_CODE         código a promocionar (por defecto MCCORE-PRO30)
-//   SENDER_EMAIL       remitente verificado en Brevo (por defecto equipo@appstockly.com, el mismo de "bienvenida")
-//   REPLY_TO           a dónde llegan las respuestas (por defecto equipo@mccore.com.co)
+//   SENDER_EMAIL       remitente "no responder" (por defecto no-reply@mccore.com.co)
+//   FALLBACK_SENDER    remitente verificado en Brevo si el anterior es rechazado (por defecto gerencia@mccore.com.co)
 //   MAX_EMAILS         tope de correos enviados, por seguridad (por defecto 300)
 //   ALLOWED_ORIGINS    orígenes permitidos separados por coma
 // SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY los pone Supabase automáticamente.
@@ -15,8 +15,8 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 import { HTML, SUBJECT } from './correo.ts'
 
 const PROMO = Deno.env.get('PROMO_CODE') ?? 'MCCORE-PRO30'
-const SENDER = Deno.env.get('SENDER_EMAIL') ?? 'equipo@appstockly.com'
-const REPLY_TO = Deno.env.get('REPLY_TO') ?? 'equipo@mccore.com.co'
+const SENDER = Deno.env.get('SENDER_EMAIL') ?? 'no-reply@mccore.com.co'
+const FALLBACK_SENDER = Deno.env.get('FALLBACK_SENDER') ?? 'gerencia@mccore.com.co'
 const MAX_EMAILS = Number(Deno.env.get('MAX_EMAILS') ?? 300)
 const ORIGINS = (Deno.env.get('ALLOWED_ORIGINS') ??
   'https://mccore.com.co,https://www.mccore.com.co,http://localhost:5180')
@@ -45,7 +45,7 @@ function reply(status: number, body: Record<string, unknown>, origin: string | n
   })
 }
 
-async function sendEmail(to: string) {
+async function brevoSend(to: string, from: string) {
   const res = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: {
@@ -54,16 +54,33 @@ async function sendEmail(to: string) {
       accept: 'application/json',
     },
     body: JSON.stringify({
-      sender: { name: 'Stockly', email: SENDER },
-      replyTo: { email: REPLY_TO, name: 'Equipo MCCore' },
+      // Correo automático de MCCore: sin dirección de respuesta
+      sender: { name: 'MCCore', email: from },
       to: [{ email: to }],
       subject: SUBJECT,
       htmlContent: HTML,
       tags: ['stockly-pro-trial'],
     }),
   })
-  if (!res.ok) throw new Error(`Brevo ${res.status}: ${await res.text()}`)
+  const text = await res.text()
+  if (!res.ok) throw new Error(`Brevo ${res.status} (${from}): ${text.slice(0, 300)}`)
+  // Brevo responde { messageId } cuando acepta el correo: lo guardamos para rastrearlo en su panel
+  try { return `${from} · ${JSON.parse(text).messageId}` } catch { return from }
 }
+
+// Intenta con no-reply; si Brevo rechaza ese remitente (no verificado), usa el de respaldo
+async function sendEmail(to: string) {
+  try {
+    return await brevoSend(to, SENDER)
+  } catch (err) {
+    if (!FALLBACK_SENDER || FALLBACK_SENDER === SENDER) throw err
+    console.error(err)
+    return await brevoSend(to, FALLBACK_SENDER)
+  }
+}
+
+const MAX_SENDS = 3                 // envíos máximos al mismo correo
+const RESEND_WAIT_MS = 2 * 60_000   // espera mínima entre reenvíos
 
 Deno.serve(async req => {
   const origin = req.headers.get('origin')
@@ -83,12 +100,6 @@ Deno.serve(async req => {
   if (website) return reply(200, { status: 'sent' }, origin)
   if (!EMAIL_RE.test(email) || email.length > 254) return reply(400, { error: 'invalid_email' }, origin)
 
-  // ¿Ya está registrado? No gasta otro cupo ni reenvía.
-  const { data: existing, error: findError } = await supabase
-    .from('stockly_trials').select('id').eq('email', email).maybeSingle()
-  if (findError) return reply(500, { error: 'server_error' }, origin)
-  if (existing) return reply(200, { status: 'already_registered' }, origin)
-
   // ¿El código sigue activo y con cupos? (lo controla la app de Stockly)
   const { data: promo, error: promoError } = await supabase
     .from('codigos_promo').select('activo, usos, usos_max, canjear_hasta').eq('codigo', PROMO).maybeSingle()
@@ -98,25 +109,37 @@ Deno.serve(async req => {
     return reply(409, { error: 'sold_out' }, origin)
   }
 
-  // Tope de seguridad de correos enviados (evita abuso del formulario)
-  const { count, error: countError } = await supabase
-    .from('stockly_trials').select('id', { count: 'exact', head: true })
-  if (countError) return reply(500, { error: 'server_error' }, origin)
-  if ((count ?? 0) >= MAX_EMAILS) return reply(409, { error: 'sold_out' }, origin)
+  // ¿Ya pidió el código antes? Se le puede reenviar (máximo 3 veces, con 2 minutos entre envíos)
+  const { data: existing, error: findError } = await supabase
+    .from('stockly_trials').select('id, envios, ultimo_envio').eq('email', email).maybeSingle()
+  if (findError) return reply(500, { error: 'server_error' }, origin)
 
-  // Reserva el cupo (la restricción única evita duplicados si llegan dos envíos a la vez)
-  const { error: insertError } = await supabase.from('stockly_trials').insert({ email })
-  if (insertError) {
-    if (insertError.code === '23505') return reply(200, { status: 'already_registered' }, origin)
-    return reply(500, { error: 'server_error' }, origin)
+  if (existing) {
+    const recent = Date.now() - new Date(existing.ultimo_envio).getTime() < RESEND_WAIT_MS
+    if (existing.envios >= MAX_SENDS || recent) return reply(200, { status: 'already_registered' }, origin)
+  } else {
+    // Tope de seguridad de correos distintos (evita abuso del formulario)
+    const { count, error: countError } = await supabase
+      .from('stockly_trials').select('id', { count: 'exact', head: true })
+    if (countError) return reply(500, { error: 'server_error' }, origin)
+    if ((count ?? 0) >= MAX_EMAILS) return reply(409, { error: 'sold_out' }, origin)
+
+    const { error: insertError } = await supabase.from('stockly_trials').insert({ email, envios: 0 })
+    if (insertError && insertError.code !== '23505') return reply(500, { error: 'server_error' }, origin)
   }
 
+  const sends = existing?.envios ?? 0
   try {
-    await sendEmail(email)
+    const messageId = await sendEmail(email)
+    await supabase.from('stockly_trials')
+      .update({ envios: sends + 1, ultimo_envio: new Date().toISOString(), brevo_message_id: messageId, ultimo_error: null })
+      .eq('email', email)
   } catch (err) {
     console.error(err)
-    // Si el correo falla, libera el cupo para que la persona pueda intentarlo de nuevo
-    await supabase.from('stockly_trials').delete().eq('email', email)
+    // Guarda el error para diagnosticar y deja reintentar de inmediato
+    await supabase.from('stockly_trials')
+      .update({ ultimo_error: String(err).slice(0, 500), ultimo_envio: new Date(0).toISOString() })
+      .eq('email', email)
     return reply(502, { error: 'email_failed' }, origin)
   }
 
