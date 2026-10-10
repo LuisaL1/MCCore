@@ -13,14 +13,12 @@
 
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { HTML, SUBJECT, TEXT } from './correo.ts'
+import { corsHeaders, json } from '../_shared/cors.ts'
 
 const PROMO = Deno.env.get('PROMO_CODE') ?? 'MCCORE-PRO30'
 const SENDER = Deno.env.get('SENDER_EMAIL') ?? 'no-reply@mccore.com.co'
 const FALLBACK_SENDER = Deno.env.get('FALLBACK_SENDER') ?? 'gerencia@mccore.com.co'
 const MAX_EMAILS = Number(Deno.env.get('MAX_EMAILS') ?? 300)
-const ORIGINS = (Deno.env.get('ALLOWED_ORIGINS') ??
-  'https://mccore.com.co,https://www.mccore.com.co,http://localhost:5180')
-  .split(',').map(o => o.trim())
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
@@ -29,21 +27,9 @@ const supabase = createClient(
   Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
 )
 
-function cors(origin: string | null) {
-  return {
-    'Access-Control-Allow-Origin': origin && ORIGINS.includes(origin) ? origin : ORIGINS[0],
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'content-type',
-    'Vary': 'Origin',
-  }
-}
-
-function reply(status: number, body: Record<string, unknown>, origin: string | null) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...cors(origin), 'Content-Type': 'application/json' },
-  })
-}
+// CORS compartido (mccore.com.co, *.vercel.app y local): ver ../_shared/cors.ts
+const cors = corsHeaders
+const reply = json
 
 async function brevoSend(to: string, from: string) {
   const res = await fetch('https://api.brevo.com/v3/smtp/email', {

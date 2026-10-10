@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import circles from '../assets/hero-circles.webp'
+import { sendContactMessage } from '../lib/contactForm.js'
 import './Contact.css'
 
 // Datos de contacto oficiales
@@ -11,6 +12,16 @@ const channels = [
 export default function Contact() {
   const [sent, setSent] = useState(false)
   const [service, setService] = useState('')
+  const [form, setForm] = useState({ nombre: '', email: '', mensaje: '', website: '' })
+  const [sending, setSending] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+  const update = field => e => setForm(f => ({ ...f, [field]: e.target.value }))
+
+  const errorText = {
+    invalid_email: 'Revisa tu correo, parece que tiene un error.',
+    too_many: 'Recibimos varios mensajes tuyos hace poco. Intenta de nuevo en un rato.',
+    network: 'No pudimos conectarnos. Revisa tu internet e intenta de nuevo.',
+  }
 
   // El botón "Solicita una demo" del navbar elige esta opción automáticamente
   useEffect(() => {
@@ -22,10 +33,20 @@ export default function Contact() {
     return () => window.removeEventListener('contact:preset', onPreset)
   }, [])
 
-  // Por ahora solo muestra el mensaje de confirmación; falta conectarlo a un correo o CRM
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setErrorMsg('')
+    try {
+      await sendContactMessage({ ...form, servicio: service })
+      setSent(true)
+      setForm({ nombre: '', email: '', mensaje: '', website: '' })
+      setService('')
+    } catch (err) {
+      setErrorMsg(errorText[err.code] ?? `Algo salió mal. Escríbenos directo a equipo@mccore.com.co.`)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -74,11 +95,11 @@ export default function Contact() {
                 <form className="contact-form row g-3" onSubmit={handleSubmit}>
                   <div className="col-md-6">
                     <label htmlFor="c-name" className="form-label">Nombre</label>
-                    <input id="c-name" className="form-control" required placeholder="Tu nombre" />
+                    <input id="c-name" className="form-control" required placeholder="Tu nombre" value={form.nombre} onChange={update('nombre')} maxLength={120} />
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="c-email" className="form-label">Correo</label>
-                    <input id="c-email" type="email" className="form-control" required placeholder="tu@correo.com" />
+                    <input id="c-email" type="email" className="form-control" required placeholder="tu@correo.com" value={form.email} onChange={update('email')} />
                   </div>
                   <div className="col-12">
                     <label htmlFor="c-service" className="form-label">¿Qué necesitas?</label>
@@ -94,12 +115,19 @@ export default function Contact() {
                   </div>
                   <div className="col-12">
                     <label htmlFor="c-message" className="form-label">Cuéntanos tu idea</label>
-                    <textarea id="c-message" className="form-control" rows="4" required placeholder="Quiero construir..." />
+                    <textarea id="c-message" className="form-control" rows="4" required placeholder="Quiero construir..." value={form.mensaje} onChange={update('mensaje')} maxLength={5000} />
                   </div>
                   <div className="col-12">
-                    <button type="submit" className="mc-btn">
-                      Enviar mensaje <i className="bi bi-send" aria-hidden="true" />
+                    {/* Campo trampa para bots (invisible para las personas) */}
+                    <input className="contact-trap" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={update('website')} />
+                    <button type="submit" className="mc-btn" disabled={sending}>
+                      {sending ? 'Enviando…' : 'Enviar mensaje'} <i className="bi bi-send" aria-hidden="true" />
                     </button>
+                    {errorMsg && (
+                      <p className="contact-error" role="alert">
+                        <i className="bi bi-exclamation-circle" aria-hidden="true" /> {errorMsg}
+                      </p>
+                    )}
                   </div>
                 </form>
               )}
