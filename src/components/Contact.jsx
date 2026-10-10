@@ -59,7 +59,7 @@ export default function Contact() {
               <span className="eyebrow">Contacto</span>
               <h2 className="section-title">¿Construimos lo que <span className="accent">sigue</span>?</h2>
               <p className="section-lead mb-4">
-                Cuéntanos tu idea y te enviamos una propuesta, sin compromiso.
+                Cuéntanos tu idea. Te respondemos con una propuesta clara y sin compromiso.
               </p>
               <ul className="contact-channels">
                 {channels.map(c => {
@@ -88,7 +88,7 @@ export default function Contact() {
                 <div className="contact-thanks">
                   <i className="bi bi-check-circle" aria-hidden="true" />
                   <h3>¡Mensaje recibido!</h3>
-                  <p>Te escribimos muy pronto.</p>
+                  <p>Gracias por escribirnos. Ya te enviamos una confirmación a tu correo.</p>
                   <button className="mc-btn mc-btn-outline" onClick={() => setSent(false)}>Enviar otro mensaje</button>
                 </div>
               ) : (

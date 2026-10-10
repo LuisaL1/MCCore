@@ -7,7 +7,7 @@ const columns = [
     links: [
       { href: '#servicios', label: 'Servicios' },
       { href: '#stockly', label: 'Stockly' },
-      { href: '#planes', label: 'Planes' },
+      { href: '#planes', label: 'Planes de Stockly' },
       { href: '#preguntas', label: 'Preguntas frecuentes' },
       { href: '#contacto', label: 'Contacto' },
     ],

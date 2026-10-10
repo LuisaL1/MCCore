@@ -10,7 +10,7 @@ export default function StocklyPlans() {
         <div className="section-head">
           <span className="eyebrow">Planes de Stockly</span>
           <h2 className="section-title">Empieza gratis. <span className="accent">Crece cuando quieras.</span></h2>
-          <p className="section-lead">Precios finales en pesos colombianos, sin cargos adicionales.</p>
+          <p className="section-lead">Precios finales en pesos colombianos. Sin cargos ocultos.</p>
 
           <div className="sp-toggle" role="group" aria-label="Periodo de pago">
             <button className={!yearly ? 'active' : ''} aria-pressed={!yearly} onClick={() => setYearly(false)}>Mensual</button>

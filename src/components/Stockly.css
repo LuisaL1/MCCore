@@ -341,7 +341,7 @@
 }
 
 /* Envío del formulario */
-.stockly-waitlist .mc-btn:disabled { opacity: .7; cursor: wait; }
+.stockly-waitlist .mc-btn:disabled { opacity: .7; cursor: progress; }
 .stockly-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .stockly-error {
   display: flex;

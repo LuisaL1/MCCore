@@ -13,10 +13,10 @@ const SLIDES = [{ id: 'inicio' }, { id: 'detalles' }]
 const HASH_TO_SLIDE = { '#stockly': 'inicio', '#stockly-funciones': 'detalles', '#planes': 'detalles', '#preguntas': 'detalles' }
 
 const features = [
-  { icon: 'bi-lightning-charge', title: 'Caja ágil', text: 'Cobra en segundos, con todos los medios de pago.' },
-  { icon: 'bi-box-seam', title: 'Inventario al día', text: 'Varias bodegas, kardex y alertas de stock.' },
-  { icon: 'bi-receipt', title: 'Facturas en PDF', text: 'Con tu logo, listas para enviar por WhatsApp.' },
-  { icon: 'bi-stars', title: 'Novandra', text: 'Pregúntale a tu negocio como a una persona.' },
+  { icon: 'bi-lightning-charge', title: 'Caja ágil', text: 'Cobra en segundos, con cualquier medio de pago.' },
+  { icon: 'bi-box-seam', title: 'Inventario al día', text: 'Bodegas, kardex y alertas. Siempre al día.' },
+  { icon: 'bi-receipt', title: 'Facturas en PDF', text: 'Con tu logo. Listas para WhatsApp.' },
+  { icon: 'bi-stars', title: 'Novandra', text: 'Pregúntale a tu negocio. Te responde.' },
 ]
 
 
@@ -131,7 +131,7 @@ export default function Stockly() {
           Tu inventario, en <span className="accent">piloto automático</span>
         </h2>
         <p className="section-lead mb-4">
-          Tu inventario, tus ventas y tus facturas en un solo lugar. Adiós a los cuadernos y al Excel.
+          Inventario, ventas y facturas en un solo lugar. Sin cuadernos. Sin Excel. Sin complicaciones.
         </p>
 
         <ul className="stockly-features">
@@ -150,7 +150,7 @@ export default function Stockly() {
           <span className="stockly-perk-icon"><i className="bi bi-gift" aria-hidden="true" /></span>
           <p>
             <strong>1 mes de Stockly Pro, gratis.</strong>
-            Deja tu correo y tu licencia te llega al instante.
+            Deja tu correo y tu licencia llega en segundos.
           </p>
         </div>
 

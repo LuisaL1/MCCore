@@ -62,7 +62,7 @@ export default function Hero() {
           </h1>
 
           <p className="hero-subtitle">
-            Software a la medida, sin tecnicismos. Cuéntanos qué necesitas:
+            Software a la medida. Hecho con cuidado y explicado sin tecnicismos. ¿Qué tienes en mente?
           </p>
 
           <PromptBar />
@@ -105,8 +105,8 @@ export default function Hero() {
         {/* 3 · Servicios */}
         <a href="#servicios" className="tile tile-stat" data-reveal style={{ '--delay': '.12s' }}>
           <i className="bi bi-briefcase stat-icon" aria-hidden="true" />
-          <span className="stat-big">Desarrollo de software para empresas.</span>
-          <span className="stat-text">Web, apps, sistemas a la medida e IA <i className="bi bi-arrow-right" aria-hidden="true" /></span>
+          <span className="stat-big">Software para empresas que no se detienen.</span>
+          <span className="stat-text">Web, apps, sistemas a la medida e IA. <i className="bi bi-arrow-right" aria-hidden="true" /></span>
         </a>
 
         {/* 4 · Lado humano */}
@@ -128,7 +128,7 @@ export default function Hero() {
         <div className="tile tile-novandra" data-reveal style={{ '--delay': '.2s' }}>
           <div className="nv-chat" aria-hidden="true">
             <p className="nv-user">¿Cuánto cuesta una tienda en línea?</p>
-            <p className="nv-bot">Depende de lo que vendas. Cuéntame un poco y te ayudo a cotizar 🙂</p>
+            <p className="nv-bot">Depende de lo que vendas. Cuéntame un poco y armamos la cotización juntos.</p>
           </div>
           <button className="tile-link as-button" onClick={openNovandra}>
             Pregúntale a Novandra <i className="bi bi-arrow-up-right" aria-hidden="true" />
@@ -146,13 +146,13 @@ export default function Hero() {
           </div>
           <h2 className="hs-title">Tu inventario, por fin en orden.</h2>
           <p className="hs-text">
-            Tu inventario, tus ventas y tus facturas en un solo lugar. En computador, tablet y celular.
+            Inventario, ventas y facturas. Todo en un solo lugar, en cualquier pantalla.
           </p>
           <div className="hs-novandra">
             <span className="hs-nv-icon"><i className="bi bi-stars" aria-hidden="true" /></span>
             <p>
               <strong>Con Novandra, tu agente de IA.</strong>
-              Te dice qué reabastecer y deja las compras listas. Tú apruebas.
+              Sabe qué reabastecer y deja las compras listas. Tú solo apruebas.
             </p>
           </div>
           <div className="hs-actions">

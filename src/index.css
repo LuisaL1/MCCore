@@ -163,6 +163,25 @@ h1, h2, h3, h4 {
 .mc-btn-outline:hover,
 .mc-btn-outline:focus-visible { color: var(--mc-ink); background: rgba(23, 19, 29, .05); }
 
+/* ===== Cursor coherente en toda la página =====
+   Manito solo en lo que se puede tocar; "no disponible" en lo desactivado; texto en los campos. */
+a[href],
+button:not(:disabled),
+summary,
+select:not(:disabled),
+[role="tab"],
+label[for] select { cursor: pointer; }
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled { cursor: not-allowed; }
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+textarea { cursor: text; }
+[aria-busy="true"] button[type="submit"] { cursor: progress; }
+
+/* Tarjetas que se levantan al pasar el mouse: toda la tarjeta lleva al enlace */
+.stretched-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+
 /* ===== Barra de progreso del scroll ===== */
 .scroll-progress {
   position: fixed;

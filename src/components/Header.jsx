@@ -15,14 +15,14 @@ const menus = [
         image: stocklyLogo,
         title: 'Stockly',
         badge: 'Nuevo',
-        text: 'Inventario, bodegas y pedidos en piloto automático.',
+        text: 'Inventario, ventas y facturas. En un solo lugar.',
         href: '#stockly',
       },
       {
         icon: 'bi-stars',
         title: 'Novandra',
         badge: 'IA',
-        text: 'El agente de IA de Stockly: te dice qué reabastecer y prepara compras.',
+        text: 'El agente de IA de Stockly. Sabe qué reabastecer.',
         href: '#stockly',
       },
     ],
@@ -30,15 +30,14 @@ const menus = [
   {
     label: 'Servicios',
     items: [
-      { icon: 'bi-window-stack', title: 'Desarrollo web', text: 'Sitios y plataformas que venden', href: '#servicios' },
-      { icon: 'bi-phone', title: 'Apps móviles', text: 'iOS y Android', href: '#servicios' },
+      { icon: 'bi-window-stack', title: 'Desarrollo web', text: 'Sitios que venden', href: '#servicios' },
+      { icon: 'bi-phone', title: 'Apps móviles', text: 'Para iOS y Android', href: '#servicios' },
       { icon: 'bi-cpu', title: 'Software a medida', text: 'ERP, CRM e inventarios', href: '#servicios' },
       { icon: 'bi-stars', title: 'Automatización e IA', text: 'Menos tareas repetitivas', href: '#servicios' },
-      { icon: 'bi-cloud-check', title: 'Cloud y DevOps', text: 'Infraestructura estable en la nube', href: '#servicios' },
-      { icon: 'bi-palette', title: 'Diseño UX/UI', text: 'Interfaces claras y bonitas', href: '#servicios' },
+      { icon: 'bi-cloud-check', title: 'Cloud y DevOps', text: 'Estable y siempre en línea', href: '#servicios' },
+      { icon: 'bi-palette', title: 'Diseño UX/UI', text: 'Interfaces que se entienden', href: '#servicios' },
     ],
   },
-  { label: 'Planes', href: '#planes' },
   { label: 'Contacto', href: '#contacto' },
 ]
 

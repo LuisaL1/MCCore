@@ -11,7 +11,7 @@ export default function StocklyFeatures({ onBack }) {
         </button>
         <span className="eyebrow">Stockly</span>
         <h2 className="section-title">Todo tu negocio, <span className="accent">en una sola app.</span></h2>
-        <p className="section-lead">En la nube, para negocios en Colombia. Funciona en computador, tablet y celular.</p>
+        <p className="section-lead">Pensado para negocios en Colombia. En la nube y en cualquier pantalla.</p>
       </div>
 
       <div className="sd-grid">

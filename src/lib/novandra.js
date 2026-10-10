@@ -12,7 +12,7 @@ export const askFromPage = text =>
   window.dispatchEvent(new CustomEvent('novandra:ask', { detail: text }))
 
 export const NOVANDRA_GREETING =
-  '¡Hola! Soy Novandra, la asistente de MCCore ✨ ¿En qué te puedo ayudar hoy?'
+  'Hola, soy Novandra, la asistente de MCCore. ¿En qué te ayudo hoy?'
 
 export const QUICK_REPLIES = ['¿Qué servicios ofrecen?', '¿Cuánto cuesta una página web?', '¿Cómo es el proceso?', 'Quiero hablar con alguien']
 
@@ -31,7 +31,7 @@ const rules = [
   {
     match: /precio|cuesta|costo|valor|cotiza|presupuesto/,
     reply:
-      'Cada proyecto es distinto, así que cotizamos según lo que necesites. Si me cuentas un poco de tu idea en el formulario de contacto, te enviamos una propuesta inicial sin compromiso 💜',
+      'Cada proyecto es distinto, así que cotizamos según lo que necesites. Si me cuentas un poco de tu idea en el formulario de contacto, te enviamos una propuesta inicial, sin compromiso.',
   },
   {
     match: /proceso|trabajan|pasos|tiempo|demora|cuánto tarda/,
@@ -50,7 +50,7 @@ const rules = [
   {
     match: /\bia\b|inteligencia|automatiza|chatbot|bot/,
     reply:
-      'Nos encanta ese tema 🤖 Integramos IA para automatizar procesos, atender clientes (¡como yo!) y analizar datos. Cuéntame qué tarea te gustaría automatizar.',
+      'Es uno de nuestros temas favoritos. Integramos IA para automatizar procesos, atender clientes (¡como yo!) y analizar datos. Cuéntame qué tarea te gustaría automatizar.',
   },
   {
     match: /humano|persona|asesor|hablar|contact|whatsapp|llamar|correo/,
@@ -60,11 +60,11 @@ const rules = [
   },
   {
     match: /hola|buenas|hey|saludos/,
-    reply: '¡Hola! 👋 Cuéntame qué tienes en mente y te ayudo a darle forma.',
+    reply: 'Hola. Cuéntame qué tienes en mente y le damos forma juntos.',
   },
   {
     match: /gracias|genial|perfecto|excelente/,
-    reply: '¡Con gusto! Aquí estaré si necesitas algo más. Construyamos lo que sigue 💜',
+    reply: '¡Con gusto! Aquí estaré si necesitas algo más. Construyamos lo que sigue.',
   },
 ]
 
