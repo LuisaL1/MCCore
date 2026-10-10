@@ -12,7 +12,7 @@
 // SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY los pone Supabase automáticamente.
 
 import { createClient } from 'npm:@supabase/supabase-js@2'
-import { HTML, SUBJECT } from './correo.ts'
+import { HTML, SUBJECT, TEXT } from './correo.ts'
 
 const PROMO = Deno.env.get('PROMO_CODE') ?? 'MCCORE-PRO30'
 const SENDER = Deno.env.get('SENDER_EMAIL') ?? 'no-reply@mccore.com.co'
@@ -55,11 +55,11 @@ async function brevoSend(to: string, from: string) {
     },
     body: JSON.stringify({
       // Correo automático de MCCore: sin dirección de respuesta
-      sender: { name: 'MCCore', email: from },
+      sender: { name: 'Equipo MCCore', email: from },
       to: [{ email: to }],
       subject: SUBJECT,
       htmlContent: HTML,
-      tags: ['stockly-pro-trial'],
+      textContent: TEXT,
     }),
   })
   const text = await res.text()

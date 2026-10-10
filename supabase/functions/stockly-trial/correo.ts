@@ -1,5 +1,5 @@
 // Generado desde correos/stockly-pro-1-mes.html: si cambias el correo, vuelve a copiarlo aquí.
-export const SUBJECT = 'Gracias por interesarte en Stockly: prueba Pro gratis por 1 mes (solo 20 cupos)'
+export const SUBJECT = 'Tu código de acceso a Stockly Pro'
 
 export const HTML = `<!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -9,7 +9,7 @@ export const HTML = `<!DOCTYPE html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
 <meta name="format-detection" content="telephone=no, address=no, email=no, date=no">
-<title>Gracias por interesarte en Stockly: prueba Pro gratis por 1 mes (solo 20 cupos)</title>
+<title>Tu código de acceso a Stockly Pro</title>
 <!--[if mso]>
 <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
 <![endif]-->
@@ -18,7 +18,7 @@ export const HTML = `<!DOCTYPE html>
 
 <!-- Texto de vista previa (se ve en la bandeja de entrada, no dentro del correo) -->
 <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#F4F1EC; opacity:0;">
-Prueba el plan Pro de Stockly gratis por 1 mes con el código MCCORE-PRO30. Solo 20 cupos.&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;
+Tu código para activar Stockly Pro es MCCORE-PRO30.&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4F1EC;">
@@ -169,3 +169,23 @@ Prueba el plan Pro de Stockly gratis por 1 mes con el código MCCORE-PRO30. Solo
 </body>
 </html>
 `
+
+// Versión en texto plano (Gmail la tiene en cuenta: ayuda a que no se clasifique como publicidad)
+export const TEXT = `Hola,
+
+¡Gracias por interesarte en Stockly!
+
+En MCCore creamos Stockly, el software para manejar tu inventario, ventas y facturación desde un solo lugar.
+
+Tu código para activar el plan Pro por 1 mes es: MCCORE-PRO30
+
+Cómo activarlo:
+1. Entra a https://appstockly.com y crea tu empresa.
+2. En el último paso, toca "¿Tienes un código promocional?" y escribe tu código.
+3. ¡Listo! Tienes Pro activo por 30 días.
+
+Al terminar el mes pasas al plan Básico gratis con todos tus datos.
+
+Este es un correo automático, por favor no lo respondas. ¿Dudas? Escríbenos a equipo@mccore.com.co.
+
+Equipo MCCore`
