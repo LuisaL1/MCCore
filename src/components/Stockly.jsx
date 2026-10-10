@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { requestStocklyTrial } from '../lib/stocklyTrial.js'
 import logo from '../assets/stockly-logo.webp'
-import illustration from '../assets/stockly-ilustracion.webp'
+import illustration800 from '../assets/stockly-ilustracion-800.webp'
+import illustration1400 from '../assets/stockly-ilustracion-1400.webp'
 import StocklyFeatures from './StocklyFeatures.jsx'
 import StocklyPlans from './StocklyPlans.jsx'
 import StocklyFaq from './StocklyFaq.jsx'
@@ -121,7 +122,7 @@ export default function Stockly() {
           <i className="bi bi-arrow-right" aria-hidden="true" />
         </button>
         <span className="stockly-pill">
-          <span className="pulse-dot" /> Nuevo · Ya disponible
+          Nuevo · Ya disponible
         </span>
         <div className="stockly-brand">
           <img src={logo} alt="" className="stockly-logo-img" aria-hidden="true" width="160" height="161" />
@@ -212,9 +213,14 @@ export default function Stockly() {
       <div className="col-lg-7" style={{ '--delay': '.15s' }}>
         <div className="stockly-art">
           <img
-            src={illustration}
+            src={illustration1400}
+            srcSet={`${illustration800} 800w, ${illustration1400} 1400w`}
+            sizes="(max-width: 991px) 100vw, 700px"
+            width="1400"
+            height="2001"
             alt="Ilustración de una persona revisando inventario con un escáner y cajas"
             loading="lazy"
+            decoding="async"
           />
 
           <div className="mock-toast">

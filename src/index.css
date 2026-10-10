@@ -84,13 +84,6 @@ h1, h2, h3, h4 {
   background: var(--mc-surface);
   border: 1px solid var(--mc-border);
 }
-.eyebrow::before {
-  content: "";
-  width: .45rem;
-  height: .45rem;
-  border-radius: 50%;
-  background: var(--mc-purple);
-}
 .section-title {
   font-size: clamp(2rem, 4.2vw, 3.2rem);
   line-height: 1.08;
