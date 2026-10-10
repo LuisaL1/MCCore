@@ -46,10 +46,12 @@ export default function Novandra() {
   const send = async text => {
     const clean = text.trim()
     if (!clean || typing) return
-    setMessages(m => [...m, { from: 'user', text: clean }])
+    const history = [...messages, { from: 'user', text: clean }]
+    setMessages(history)
     setInput('')
     setTyping(true)
-    const answer = await askNovandra(clean)
+    // El saludo inicial no se envía a la IA
+    const answer = await askNovandra(history.slice(1))
     setTyping(false)
     setMessages(m => [...m, { from: 'bot', ...answer }])
   }
@@ -83,8 +85,19 @@ export default function Novandra() {
           {messages.map((m, i) => (
             <div key={i} className={`msg msg-${m.from}`}>
               <p>{m.text}</p>
+              {m.options && i === messages.length - 1 && !typing && (
+                <div className="quick-replies in-msg">
+                  {m.options.map(o => <button key={o} onClick={() => send(o)}>{o}</button>)}
+                </div>
+              )}
               {m.action && (
-                <a href={m.action.href} className="msg-action" onClick={() => setOpen(false)}>
+                <a
+                  href={m.action.href}
+                  className="msg-action"
+                  target={m.action.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                >
                   {m.action.label}
                 </a>
               )}

@@ -189,3 +189,7 @@
   .launcher-label { display: none; }
   .novandra-launcher { width: 3.25rem; padding: 0; justify-content: center; }
 }
+
+/* Respuestas con varios párrafos y opciones dentro del mensaje */
+.msg p { white-space: pre-line; }
+.quick-replies.in-msg { margin-top: .6rem; }
