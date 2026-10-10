@@ -136,7 +136,7 @@ export default function Header() {
                 {f.title} <span className="nav-badge">{f.badge}</span>
               </span>
               <span className="nav-feature-text">{f.text}</span>
-              <span className="nav-feature-cta">Conocer más <i className="bi bi-arrow-right" aria-hidden="true" /></span>
+              <span className="nav-feature-cta">Conocer más</span>
             </a>
           ))}
         </div>
@@ -156,7 +156,7 @@ export default function Header() {
       )}
       {menu.footer && (
         <a href={menu.footer.href} className="nav-panel-footer" onClick={closeAll}>
-          {menu.footer.label} <i className="bi bi-arrow-right" aria-hidden="true" />
+          {menu.footer.label}
         </a>
       )}
     </div>

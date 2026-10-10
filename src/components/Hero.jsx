@@ -54,7 +54,6 @@ export default function Hero() {
           <button type="button" className="hero-announce" onClick={openStockly} ref={openerRef}>
             <span className="hero-announce-tag">Nuevo</span>
             Conoce Stockly
-            <i className="bi bi-arrow-right" aria-hidden="true" />
           </button>
 
           <h1 className="hero-title">
@@ -99,14 +98,14 @@ export default function Hero() {
             ))}
           </div>
 
-          <span className="tile-link">Ver cómo funciona <i className="bi bi-arrow-up-right" aria-hidden="true" /></span>
+          <span className="tile-link">Ver cómo funciona</span>
         </a>
 
         {/* 3 · Servicios */}
         <a href="#servicios" className="tile tile-stat" data-reveal style={{ '--delay': '.12s' }}>
           <i className="bi bi-briefcase stat-icon" aria-hidden="true" />
           <span className="stat-big">Software para empresas que no se detienen.</span>
-          <span className="stat-text">Web, apps, sistemas a la medida e IA. <i className="bi bi-arrow-right" aria-hidden="true" /></span>
+          <span className="stat-text">Web, apps, sistemas a la medida e IA.</span>
         </a>
 
         {/* 4 · Lado humano */}
@@ -131,7 +130,7 @@ export default function Hero() {
             <p className="nv-bot">Depende de lo que vendas. Cuéntame un poco y armamos la cotización juntos.</p>
           </div>
           <button className="tile-link as-button" onClick={openNovandra}>
-            Pregúntale a Novandra <i className="bi bi-arrow-up-right" aria-hidden="true" />
+            Pregúntale a Novandra
           </button>
         </div>
       </div>
@@ -158,7 +157,7 @@ export default function Hero() {
           <div className="hs-actions">
             <a href="#stockly" className="mc-btn">Quiero mi mes gratis</a>
             <button type="button" className="mc-btn mc-btn-outline" onClick={closeStockly} ref={backRef}>
-              <i className="bi bi-arrow-left" aria-hidden="true" /> Volver
+              Volver
             </button>
           </div>
           <p className="hs-perk">

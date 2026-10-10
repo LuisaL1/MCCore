@@ -203,7 +203,7 @@ export default function Stockly() {
         )}
         {!joined && status !== 'error' && <small className="stockly-note">Solo 20 cupos</small>}
         <button type="button" className="stockly-more" onClick={() => go('detalles')}>
-          Ver todo lo que hace Stockly <i className="bi bi-arrow-right" aria-hidden="true" />
+          Ver todo lo que hace Stockly
         </button>
         </div>
       </div>

@@ -53,7 +53,7 @@ export default function Services() {
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
                 <a href="#contacto" className="service-link stretched-link">
-                  Saber más <i className="bi bi-arrow-right" aria-hidden="true" />
+                  Saber más
                 </a>
               </article>
             </div>

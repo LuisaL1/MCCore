@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} MCCore. Todos los derechos reservados.</span>
-          <a href="#inicio">Volver arriba <i className="bi bi-arrow-up" aria-hidden="true" /></a>
+          <a href="#inicio">Volver arriba</a>
         </div>
       </div>
     </footer>

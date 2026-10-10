@@ -85,7 +85,7 @@ export default function Novandra() {
               <p>{m.text}</p>
               {m.action && (
                 <a href={m.action.href} className="msg-action" onClick={() => setOpen(false)}>
-                  {m.action.label} <i className="bi bi-arrow-right" aria-hidden="true" />
+                  {m.action.label}
                 </a>
               )}
             </div>

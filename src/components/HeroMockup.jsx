@@ -81,7 +81,7 @@ export default function HeroMockup() {
                     <div className="hm-card-head">
                       <span className="hm-ic dark"><i className="bi bi-graph-up-arrow" /></span>
                       <span><b>Ventas del periodo</b><small>Últimos 30 días</small></span>
-                      <span className="hm-link">Ver facturas <i className="bi bi-arrow-up-right" /></span>
+                      <span className="hm-link">Ver facturas</span>
                     </div>
                     <strong className="hm-big">COP 18.118.821</strong>
                     <small className="hm-sub">50 ventas</small>
