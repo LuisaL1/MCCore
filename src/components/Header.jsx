@@ -4,6 +4,9 @@ import stocklyLogo from '../assets/stockly-logo.webp'
 import { openNovandra } from '../lib/novandra.js'
 import './Header.css'
 
+// Landing de Stockly (abre en otra pestaña para no perder la página de MCCore)
+const STOCKLY_URL = 'https://appstockly.com'
+
 // Menús del navbar. Un elemento con "items" abre un desplegable; con "href" es un enlace directo.
 const menus = [
   {
@@ -203,7 +206,7 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
-          <a href="#stockly" className="mc-btn mc-btn-dark header-cta" onClick={closeAll}>
+          <a href={STOCKLY_URL} target="_blank" rel="noopener" className="mc-btn mc-btn-dark header-cta" onClick={closeAll}>
             Prueba Stockly
           </a>
           <button
@@ -257,7 +260,7 @@ export default function Header() {
           </div>
         ))}
         <div className="mobile-actions">
-          <a href="#stockly" className="mc-btn" onClick={closeAll}>Prueba Stockly</a>
+          <a href={STOCKLY_URL} target="_blank" rel="noopener" className="mc-btn" onClick={closeAll}>Prueba Stockly</a>
         </div>
       </div>
     </header>
