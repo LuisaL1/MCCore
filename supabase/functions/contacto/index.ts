@@ -6,6 +6,7 @@
 
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { corsHeaders, json } from '../_shared/cors.ts'
+import { demoEmail, escape, receivedEmail } from './autorespuesta.ts'
 
 const TO = Deno.env.get('CONTACT_TO') ?? 'equipo@mccore.com.co'
 const SENDER = Deno.env.get('SENDER_EMAIL') ?? 'no-reply@mccore.com.co'
@@ -14,9 +15,6 @@ const MAX_PER_HOUR = 5        // por correo del visitante
 const MAX_PER_DAY = 150       // en total, por seguridad
 
 const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!)
-
-const escape = (s: string) =>
-  s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!))
 
 function emailHtml(nombre: string, email: string, servicio: string, mensaje: string) {
   const row = (k: string, v: string) =>
@@ -81,14 +79,30 @@ Deno.serve(async req => {
     }),
   })
 
+  let teamError: string | null = null
   if (!res.ok) {
-    const detail = (await res.text()).slice(0, 400)
-    console.error('Brevo', res.status, detail)
-    await supabase.from('contacto_mensajes').update({ error: `Brevo ${res.status}: ${detail}` }).eq('id', saved.id)
-    // El mensaje quedó guardado: para el visitante el envío fue exitoso
-    return json(200, { status: 'saved' }, origin)
+    teamError = `Brevo ${res.status}: ${(await res.text()).slice(0, 400)}`
+    console.error(teamError)
   }
 
-  await supabase.from('contacto_mensajes').update({ enviado: true }).eq('id', saved.id)
-  return json(200, { status: 'sent' }, origin)
+  // Correo automático para quien escribió: info y acceso si pidió demo de Stockly, o confirmación
+  const auto = servicio === 'Demo de Stockly' ? demoEmail(nombre) : receivedEmail(nombre, servicio)
+  const autoRes = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': Deno.env.get('BREVO_API_KEY')!, 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify({
+      sender: { name: 'Equipo MCCore', email: SENDER },
+      to: [{ email, name: nombre }],
+      subject: auto.subject,
+      htmlContent: auto.html,
+      textContent: auto.text,
+    }),
+  })
+  if (!autoRes.ok) console.error('Autorespuesta', autoRes.status, (await autoRes.text()).slice(0, 300))
+
+  await supabase.from('contacto_mensajes')
+    .update({ enviado: !teamError, error: teamError, autorespuesta: autoRes.ok })
+    .eq('id', saved.id)
+  // El mensaje quedó guardado: para el visitante el envío fue exitoso aunque falle un correo
+  return json(200, { status: teamError ? 'saved' : 'sent' }, origin)
 })
